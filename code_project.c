@@ -144,6 +144,16 @@ int game(char mode[1], int fp)
 				printf("Result : %d\n", walk);
 				point[1] += walk;
 				board(point);
+				while (table[point[1]]) /* Have an event */
+				{
+					e_type = rand() % 10;
+					if ()
+						point[1] = event(e_type);
+					else
+						lp[1] = event(e_type);
+					if (point[1] >= 89 || lp[1] == 0) /* If have win or lose player after event */
+						break;
+				}
 				if (walk != 6) /* Change turn */
 				{
 					tp = 1;
@@ -154,5 +164,86 @@ int game(char mode[1], int fp)
 	}
 	else /* Two players */
 	{
+		if (fp) /* player is first */
+		{
+			tp = 1;
+			tb = 0;
+		}
+		board(point);
+		while (1)
+		{
+			if (tp) /* Player one's turn */
+			{
+				printf("It's your turn please type 'Dice' to roll the dice\nlife point (");
+				for (i = 1; i < 4; ++i)
+				{
+					if (lp[0] >= i)
+						printf("*");
+					else
+						printf("-");
+				}
+				printf(") : ");
+				scanf("%s", dice);
+				while (strcmp(dice, "Dice") != 0)
+				{
+					printf("Incorrect! Please type 'Dice' to roll the dice : ");
+				}
+				walk = rand() % 6 + 1;
+				printf("Result : %d\n", walk);
+				point[0] += walk;
+				board(point);
+				while (table[point[0]]) /* Have an event */
+				{
+					e_type = rand() % 10;
+					if ()
+						point[0] = event(e_type);
+					else
+						lp[0] = event(e_type);
+					if (point[0] >= 89 || lp[0] == 0) /* If have win or lose player after event */
+						break;
+				}
+				if (walk != 6) /* Change turn */
+				{
+					tp = 0;
+					tb = 1;
+				}
+			}
+			else /* Player two's turn */
+			{
+				printf("It's your turn please type 'Dice' to roll the dice\nlife point (");
+				for (i = 1; i < 4; ++i)
+				{
+					if (lp[1] >= i)
+						printf("*");
+					else
+						printf("-");
+				}
+				printf(") : ");
+				scanf("%s", dice);
+				while (strcmp(dice, "Dice") != 0)
+				{
+					printf("Incorrect! Please type 'Dice' to roll the dice : ");
+				}
+				walk = rand() % 6 + 1;
+				printf("Result : %d\n", walk);
+				point[1] += walk;
+				board(point);
+				while (table[point[1]]) /* Have an event */
+				{
+					e_type = rand() % 10;
+					if ()
+						point[1] = event(e_type);
+					else
+						lp[1] = event(e_type);
+					if (point[1] >= 89 || lp[1] == 0) /* If have win or lose player after event */
+						break;
+				}
+				if (walk != 6) /* Change turn */
+				{
+					tp = 0;
+					tb = 1;
+				}
+			}
+		}
 	}
 }
