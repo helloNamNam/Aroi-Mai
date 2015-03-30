@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 void call(int, int, int); /*Function print player's position and events in board*/
-int board(int[*]); /* Function print board to play game */
+int board(int, int); /* Function print board to play game */
 int game(char, int); /* Function change turn and rolls die to send to function board */
 int event(int[*]); /* Function random event when player move on event square grid */
 int main() /* Get mode to play or read the rules */
 {
 	char mode[1], confirm[1];
-	int fp /* First player */;
+	int fp /* First player */, len;
 	printf("\n********************************************\n");
 	printf("*    Welocome to Snake and Ladders game    *\n");
 	printf("********************************************\n\n");
@@ -16,8 +16,9 @@ int main() /* Get mode to play or read the rules */
 	printf("2. Two players\n");
 	printf("3. Read the rules\n\n");
 	printf("please select mode to play or 'q' to exit : ");
-	scanf(" %c", &mode); /* input mode to play game or exit */
-	while (mode[0] != '1' && mode[0] != '2')
+	scanf("%s", mode); /* input mode to play game or exit */
+	len = strlen(mode);
+	while ((mode[0] != '1' && mode[0] != '2') || len > 1)
 	{
 		if (mode[0] == '3') /* Read the rules */
 		{
@@ -33,7 +34,7 @@ int main() /* Get mode to play or read the rules */
 			printf("2. Two players\n");
 			printf("3. Read the rules\n\n");
 			printf("please select mode to play or 'q' to exit : ");
-			scanf(" %c", &mode);
+			scanf("%s", mode);
 		}
 		else if (mode[0] == 'q') /* Exit */
 		{
@@ -43,16 +44,17 @@ int main() /* Get mode to play or read the rules */
 		else
 		{
 			printf("You don't understand english? please select mode '1', '2', '3' or 'q' : ");
-			scanf(" %c", &mode);
+			scanf("%s", mode);
+			len = strlen(mode);
 		}
 	}
 	printf("\nYou select mode %c\n", mode[0]);
 	printf("please enter 'y' to start or 'n' to back to mainmenu : ");
-	scanf(" %c", &confirm); /* input confirm word to continue or back to main menu */
+	scanf(" %c", confirm); /* input confirm word to continue or back to main menu */
 	while (confirm[0] != 'y' && confirm[0] != 'n')
 	{
 		printf("Can you understand human language? please enter 'y' to start or 'n' to back to mainmenu : ");
-		scanf(" %c", &confirm);
+		scanf(" %c", confirm);
 	}
 	if (confirm[0] == 'n') /* Call function main again because player want to go to mainmenu */
 	{
@@ -83,7 +85,7 @@ int game(char mode[1], int fp)
 {
 	char dice[4];
 	int table[90] = {0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 2, 1, 0, 0, 0, 0, 2, 0, 0, 2, 1, 0, 0, 2, 0, 0, 2, 0, 0, 1, 0, 0, 1, 2, 0, 0, 2, 0, 0, 1, 0, 0, 0, 2, 0, 2, 0, 0, 0, 1, 1, 2, 0, 2, 0, 1, 0, 0, 0, 2, 1, 0, 1, 1, 0, 2, 2, 2, 2, 2, 0};
-	int tp = 0, tb = 1, point[2] = {0}, lp[2] = {4}, walk, e_type;
+	int tp = 0, tb = 1, point[2] = {0}, lp[2] = {4}, walk, e_type, i;
 	if (mode[0] == '1') /* Single player */
 	{
 		if (fp) /* player is first */
@@ -91,7 +93,7 @@ int game(char mode[1], int fp)
 			tp = 1;
 			tb = 0;
 		}
-		board(point);
+		board(point[0], point[1]);
 		while (1)
 		{
 			if (tp) /* Player's turn */
@@ -113,7 +115,7 @@ int game(char mode[1], int fp)
 				walk = rand() % 6 + 1;
 				printf("Result : %d\n", walk);
 				point[0] += walk;
-				board(point);
+				board(point[0], point[1]);
 				while (table[point[0]] != 0) /* Have an event */
 				{
 					e_type = rand() % 10;
@@ -144,7 +146,7 @@ int game(char mode[1], int fp)
 				walk = rand() % 6 + 1;
 				printf("Result : %d\n", walk);
 				point[1] += walk;
-				board(point);
+				board(point[0], point[1]);
 				while (table[point[1]] != 0) /* Have an event */
 				{
 					e_type = rand() % 10;
@@ -170,7 +172,7 @@ int game(char mode[1], int fp)
 			tp = 1;
 			tb = 0;
 		}
-		board(point);
+		board(point[0], point[1]);
 		while (1)
 		{
 			if (tp) /* Player one's turn */
@@ -192,7 +194,7 @@ int game(char mode[1], int fp)
 				walk = rand() % 6 + 1;
 				printf("Result : %d\n", walk);
 				point[0] += walk;
-				board(point);
+				board(point[0], point[1]);
 				while (table[point[0]] != 0) /* Have an event */
 				{
 					e_type = rand() % 10;
@@ -228,7 +230,7 @@ int game(char mode[1], int fp)
 				walk = rand() % 6 + 1;
 				printf("Result : %d\n", walk);
 				point[1] += walk;
-				board(point);
+				board(point[0], point[1]);
 				while (table[point[1]] != 0) /* Have an event */
 				{
 					e_type = rand() % 10;
@@ -248,10 +250,8 @@ int game(char mode[1], int fp)
 		}
 	}
 }
-int board(int position)
+int board(int a, int b)
 {
-
-	int a = position[0], b = position[1];
 	int i;
 	printf("     ___ ___ ___ ___ ___ ___ ___ ___ ___ ___\n..> |");
 	for(i = 80; i<=89; i++)
@@ -300,7 +300,7 @@ int board(int position)
 	{
 		call(a, b, i);
 	}
-	printf(" ...");
+	printf(" ...\n");
 	return 0;
 }
 void call(int a, int b, int i)
@@ -334,5 +334,9 @@ void call(int a, int b, int i)
 	else if(table[i] == 3)
 	{
 		printf("OTZ|");
+	}
+	else if(table[i] == 0)
+	{
+		printf("___|");
 	}
 }
