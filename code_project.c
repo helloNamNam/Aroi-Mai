@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+void call(int, int, int); /*Function print player's position and events in board*/
 int board(int[*]); /* Function print board to play game */
 int game(char, int); /* Function change turn and rolls die to send to function board */
 int event(int[*]); /* Function random event when player move on event square grid */
@@ -81,7 +82,7 @@ int main() /* Get mode to play or read the rules */
 int game(char mode[1], int fp)
 {
 	char dice[4];
-	int table[90] = {0};
+	int table[90] = {0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 2, 1, 0, 0, 0, 0, 2, 0, 0, 2, 1, 0, 0, 2, 0, 0, 2, 0, 0, 1, 0, 0, 1, 2, 0, 0, 2, 0, 0, 1, 0, 0, 0, 2, 0, 2, 0, 0, 0, 1, 1, 2, 0, 2, 0, 1, 0, 0, 0, 2, 1, 0, 1, 1, 0, 2, 2, 2, 2, 2, 0};
 	int tp = 0, tb = 1, point[2] = {0}, lp[2] = {4}, walk, e_type;
 	if (mode[0] == '1') /* Single player */
 	{
@@ -113,7 +114,7 @@ int game(char mode[1], int fp)
 				printf("Result : %d\n", walk);
 				point[0] += walk;
 				board(point);
-				while (table[point[0]]) /* Have an event */
+				while (table[point[0]] != 0) /* Have an event */
 				{
 					e_type = rand() % 10;
 					if ()
@@ -144,7 +145,7 @@ int game(char mode[1], int fp)
 				printf("Result : %d\n", walk);
 				point[1] += walk;
 				board(point);
-				while (table[point[1]]) /* Have an event */
+				while (table[point[1]] != 0) /* Have an event */
 				{
 					e_type = rand() % 10;
 					if ()
@@ -174,7 +175,7 @@ int game(char mode[1], int fp)
 		{
 			if (tp) /* Player one's turn */
 			{
-				printf("It's your turn please type 'Dice' to roll the dice\nlife point (");
+				printf("Player one's turn please type 'Dice' to roll the dice\nlife point (");
 				for (i = 1; i < 4; ++i)
 				{
 					if (lp[0] >= i)
@@ -192,7 +193,7 @@ int game(char mode[1], int fp)
 				printf("Result : %d\n", walk);
 				point[0] += walk;
 				board(point);
-				while (table[point[0]]) /* Have an event */
+				while (table[point[0]] != 0) /* Have an event */
 				{
 					e_type = rand() % 10;
 					if ()
@@ -210,7 +211,7 @@ int game(char mode[1], int fp)
 			}
 			else /* Player two's turn */
 			{
-				printf("It's your turn please type 'Dice' to roll the dice\nlife point (");
+				printf("Player two's turn please type 'Dice' to roll the dice\nlife point (");
 				for (i = 1; i < 4; ++i)
 				{
 					if (lp[1] >= i)
@@ -228,7 +229,7 @@ int game(char mode[1], int fp)
 				printf("Result : %d\n", walk);
 				point[1] += walk;
 				board(point);
-				while (table[point[1]]) /* Have an event */
+				while (table[point[1]] != 0) /* Have an event */
 				{
 					e_type = rand() % 10;
 					if ()
@@ -245,5 +246,93 @@ int game(char mode[1], int fp)
 				}
 			}
 		}
+	}
+}
+int board(int position)
+{
+
+	int a = position[0], b = position[1];
+	int i;
+	printf("     ___ ___ ___ ___ ___ ___ ___ ___ ___ ___\n..> |");
+	for(i = 80; i<=89; i++)
+	{
+		call(a, b, i);
+	}
+
+	printf("\n.    ___ ___ ___ ___ ___ ___ ___ ___ ___ ___\n... |");
+	for(i = 79; i>=70; i--)
+	{
+		call(a, b, i);
+	}
+	printf(" <..\n     ___ ___ ___ ___ ___ ___ ___ ___ ___ ___    .\n..> |");
+	for(i = 60; i<=69; i++)
+	{
+		call(a, b, i);
+	}
+	printf(" ...\n.    ___ ___ ___ ___ ___ ___ ___ ___ ___ ___\n... |");
+	for(i = 59; i>=50; i--)
+	{
+		call(a, b, i);
+	}
+	printf(" <..\n     ___ ___ ___ ___ ___ ___ ___ ___ ___ ___    .\n..> |");
+	for(i = 40; i<=49; i++)
+	{
+		call(a, b, i);
+	}
+
+	printf(" ...\n.    ___ ___ ___ ___ ___ ___ ___ ___ ___ ___\n... |");
+	for(i = 39; i>=30; i--)
+	{
+		call(a, b, i);
+	}
+	printf(" <..\n     ___ ___ ___ ___ ___ ___ ___ ___ ___ ___    .\n..> |");
+	for(i = 20; i<=29; i++)
+	{
+		call(a, b, i);
+	}
+	printf(" ...\n.    ___ ___ ___ ___ ___ ___ ___ ___ ___ ___\n... |");
+	for(i = 19; i>=10; i--)
+	{
+		call(a, b, i);
+	}
+	printf(" <..\n     ___ ___ ___ ___ ___ ___ ___ ___ ___ ___    .\n    |");
+	for(i = 0; i<=9; i++)
+	{
+		call(a, b, i);
+	}
+	printf(" ...");
+	return 0;
+}
+void call(int a, int b, int i)
+{
+	int table[90] = {0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 2, 1, 0, 0, 0, 0, 2, 0, 0, 2, 1, 0, 0, 2, 0, 0, 2, 0, 0, 1, 0, 0, 1, 2, 0, 0, 2, 0, 0, 1, 0, 0, 0, 2, 0, 2, 0, 0, 0, 1, 1, 2, 0, 2, 0, 1, 0, 0, 0, 2, 1, 0, 1, 1, 0, 2, 2, 2, 2, 2, 0};
+	if (i == a && i == b)
+	{
+		printf("A=B|");
+	}
+	else if(i == a)
+	{
+		printf("_A_|");
+	}
+	else if(i == b)
+	{
+		pritnf("_B_|");
+	}
+	else if (i == 89)
+	{
+
+		printf("fin|");
+	}
+	else if(table[i] == 1)
+	{
+		printf("^_^|");
+	}
+	else if(table[i] == 2)
+	{
+		printf("T^T|");
+	}
+	else if(table[i] == 3)
+	{
+		printf("OTZ|");
 	}
 }
