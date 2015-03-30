@@ -2,7 +2,7 @@
 #include <string.h>
 void call(int, int, int); /*Function print player's position and events in board*/
 int board(int, int); /* Function print board to play game */
-int game(char, int); /* Function change turn and rolls die to send to function board */
+int game(char[*], int); /* Function change turn and rolls die to send to function board */
 int event(int[*]); /* Function random event when player move on event square grid */
 int main() /* Get mode to play or read the rules */
 {
