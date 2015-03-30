@@ -316,7 +316,7 @@ void call(int a, int b, int i)
 	}
 	else if(i == b)
 	{
-		pritnf("_B_|");
+		printf("_B_|");
 	}
 	else if (i == 89)
 	{
