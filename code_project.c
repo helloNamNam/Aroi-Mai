@@ -116,16 +116,7 @@ int game(char mode[1], int fp)
 				printf("Result : %d\n", walk);
 				point[0] += walk;
 				board(point[0], point[1]);
-				while (table[point[0]] != 0) /* Have an event */
-				{
-					e_type = rand() % 10;
-					if ()
-						point[0] = event(e_type);
-					else
-						lp[0] = event(e_type);
-					if (point[0] >= 89 || lp[0] == 0) /* If have win or lose player after event */
-						break;
-				}
+
 				if (walk != 6) /* Change turn */
 				{
 					tp = 0;
@@ -147,16 +138,7 @@ int game(char mode[1], int fp)
 				printf("Result : %d\n", walk);
 				point[1] += walk;
 				board(point[0], point[1]);
-				while (table[point[1]] != 0) /* Have an event */
-				{
-					e_type = rand() % 10;
-					if ()
-						point[1] = event(e_type);
-					else
-						lp[1] = event(e_type);
-					if (point[1] >= 89 || lp[1] == 0) /* If have win or lose player after event */
-						break;
-				}
+
 				if (walk != 6) /* Change turn */
 				{
 					tp = 1;
@@ -195,16 +177,7 @@ int game(char mode[1], int fp)
 				printf("Result : %d\n", walk);
 				point[0] += walk;
 				board(point[0], point[1]);
-				while (table[point[0]] != 0) /* Have an event */
-				{
-					e_type = rand() % 10;
-					if ()
-						point[0] = event(e_type);
-					else
-						lp[0] = event(e_type);
-					if (point[0] >= 89 || lp[0] == 0) /* If have win or lose player after event */
-						break;
-				}
+
 				if (walk != 6) /* Change turn */
 				{
 					tp = 0;
@@ -231,16 +204,7 @@ int game(char mode[1], int fp)
 				printf("Result : %d\n", walk);
 				point[1] += walk;
 				board(point[0], point[1]);
-				while (table[point[1]] != 0) /* Have an event */
-				{
-					e_type = rand() % 10;
-					if ()
-						point[1] = event(e_type);
-					else
-						lp[1] = event(e_type);
-					if (point[1] >= 89 || lp[1] == 0) /* If have win or lose player after event */
-						break;
-				}
+
 				if (walk != 6) /* Change turn */
 				{
 					tp = 0;
