@@ -13,11 +13,14 @@ int main() /* Get mode to play or read the rules */
 	srand(time(0));
 	printf("\n********************************************\n");
 	printf("*    Welocome to Snake and Ladders game    *\n");
-	printf("********************************************\n\n");
-	printf("=== Mode ===\n\n");
-	printf("1. Single player\n");
-	printf("2. Two players\n");
-	printf("3. Read the rules\n\n");
+	printf("********************************************\n");
+	printf("|                                          |\n");
+	printf("|                === Mode ===              |\n");
+	printf("|                                          |\n");
+	printf("|             1. Single player             |\n");
+	printf("|             2. Two players               |\n");
+	printf("|             3. Read the rules            |\n");
+	printf("|__________________________________________|\n\n");
 	printf("please select mode to play or 'q' to exit : ");
 	scanf("%s", mode); /* input mode to play game or exit */
 	len = strlen(mode);
@@ -373,7 +376,7 @@ int game(char mode[1], int fp)
 							{
 								evenbreak = 1;
 							}
-						}	
+						}
 					}
 					else if (table[point[0]] == 2)
 					{
@@ -403,7 +406,7 @@ int game(char mode[1], int fp)
 						{
 							printf("You select choice C.\n");
 							event(&point[0], &lp[0], &point[1], &lp[1], ch_c, 0);
-						}	
+						}
 					}
 					else
 					{
@@ -484,7 +487,7 @@ int game(char mode[1], int fp)
 							{
 								evenbreak = 1;
 							}
-						}	
+						}
 					}
 					else if (table[point[0]] == 2)
 					{
