@@ -68,22 +68,24 @@ int main() /* Get mode to play or read the rules */
 	}
 	else
 	{
+	    processing_image(1);
 		if (mode[0] == '1')
 		{
 			fp = rand() % 2;
 			if (fp)
-				printf("You are first player.\n");
+				printf("You are first player.");
 			else
-				printf("Bot is first player.\n");
+				printf("Bot is first player.");
 		}
 		else
 		{
 			fp = rand() % 2;
 			if (fp)
-				printf("Player A is first player.\n");
+				printf("Player A is first player.");
 			else
-				printf("Player B is first player.\n");
+				printf("Player B is first player.");
 		}
+		processing_image(2);
 		game(mode, fp);
 	}
 }
@@ -106,7 +108,7 @@ int game(char mode[1], int fp)
 			evenbreak = 0;
 			if (tp) /* Player's turn */
 			{
-				printf("It's your turn please type 'Dice' to roll the dice\nlife point (");
+				printf("\n\nIt's your turn please type 'Dice' to roll the dice\nlife point (");
 				for (i = 1; i <= 4; ++i) /* Print life point */
 				{
 					if (lp[0] >= i)
@@ -121,8 +123,10 @@ int game(char mode[1], int fp)
 					printf("Incorrect! Please type 'Dice' to roll the dice : ");
 					scanf("%s", dice);
 				}
+				processing_image(3);
 				walk = rand() % 6 + 1;
 				printf("Result : %d\n", walk);
+				processing_image(4);
 				point[0] += walk;
 				board(point[0], point[1]);
 				while (table[point[0]] != 0 && evenbreak == 0) /* Have an event */
@@ -201,7 +205,7 @@ int game(char mode[1], int fp)
 								evenbreak = 1;
 							}
 						}
-						else if (ch_char[0] == 'c') /* Select choice B */
+						else if (ch_char[0] == 'c') /* Select choice C */
 						{
 							printf("You select choice C.\n");
 							event(&point[0], &lp[0], &point[1], &lp[1], ch_c, 0);
@@ -229,7 +233,7 @@ int game(char mode[1], int fp)
 			}
 			else /* Bot's turn */
 			{
-				printf("It's Bot turn to roll the dice\nlife point (");
+				printf("\n\nIt's Bot turn to roll the dice\nlife point (");
 				for (i = 1; i <= 4; ++i)
 				{
 					if (lp[1] >= i)
@@ -237,9 +241,11 @@ int game(char mode[1], int fp)
 					else
 						printf("-");
 				}
-				printf(")");
+				printf(")\n");
+				processing_image(3);
 				walk = rand() % 6 + 1;
 				printf("\nResult : %d\n", walk);
+				processing_image(4);
 				point[1] += walk;
 				board(point[0], point[1]);
 				while (table[point[1]] != 0 && evenbreak == 0) /* Have an event */
@@ -331,7 +337,9 @@ int game(char mode[1], int fp)
 					scanf("%s", dice);
 				}
 				walk = rand() % 6 + 1;
+				processing_image(3);
 				printf("Result : %d\n", walk);
+				processing_image(4);
 				point[0] += walk;
 				board(point[0], point[1]);
 				while (table[point[0]] != 0 && evenbreak == 0) /* Have an event */
@@ -442,7 +450,9 @@ int game(char mode[1], int fp)
 					scanf("%s", dice);
 				}
 				walk = rand() % 6 + 1;
+				processing_image(3);
 				printf("Result : %d\n", walk);
+				processing_image(4);
 				point[1] += walk;
 				board(point[0], point[1]);
 				while (table[point[1]] != 0 && evenbreak == 0) /* Have an event */
@@ -561,54 +571,62 @@ int game(char mode[1], int fp)
 int board(int a, int b) /* Print board to play */
 {
 	int i;
+	processing_image(1);
 	printf("     ___ ___ ___ ___ ___ ___ ___ ___ ___ ___\n..> |");
 	for(i = 80; i<=89; i++)
 	{
 		call(a, b, i);
 	}
-
+    processing_image(5);
 	printf("\n.    ___ ___ ___ ___ ___ ___ ___ ___ ___ ___\n... |");
 	for(i = 79; i>=70; i--)
 	{
 		call(a, b, i);
 	}
+	processing_image(5);
 	printf(" <..\n     ___ ___ ___ ___ ___ ___ ___ ___ ___ ___    .\n..> |");
 	for(i = 60; i<=69; i++)
 	{
 		call(a, b, i);
 	}
+	processing_image(5);
 	printf(" ...\n.    ___ ___ ___ ___ ___ ___ ___ ___ ___ ___\n... |");
 	for(i = 59; i>=50; i--)
 	{
 		call(a, b, i);
 	}
+	processing_image(5);
 	printf(" <..\n     ___ ___ ___ ___ ___ ___ ___ ___ ___ ___    .\n..> |");
 	for(i = 40; i<=49; i++)
 	{
 		call(a, b, i);
 	}
-
+	processing_image(5);
 	printf(" ...\n.    ___ ___ ___ ___ ___ ___ ___ ___ ___ ___\n... |");
 	for(i = 39; i>=30; i--)
 	{
 		call(a, b, i);
 	}
+	processing_image(5);
 	printf(" <..\n     ___ ___ ___ ___ ___ ___ ___ ___ ___ ___    .\n..> |");
 	for(i = 20; i<=29; i++)
 	{
 		call(a, b, i);
 	}
+	processing_image(5);
 	printf(" ...\n.    ___ ___ ___ ___ ___ ___ ___ ___ ___ ___\n... |");
 	for(i = 19; i>=10; i--)
 	{
 		call(a, b, i);
 	}
+	processing_image(5);
 	printf(" <..\n     ___ ___ ___ ___ ___ ___ ___ ___ ___ ___    .\n    |");
 	for(i = 0; i<=9; i++)
 	{
 		call(a, b, i);
 	}
 	printf(" ...\n");
+	processing_image(5);
 	return 0;
 }
 void call(int a, int b, int i) /* Print player's position and events in board */
@@ -665,6 +683,7 @@ int event(int * pnt, int * life, int * pnt_b, int * life_b, int num, int player)
 		{
 			*pnt += upward[num];
 			printf("%s\n", event_ary[num]);
+			processing_image(4);
 			board(*pnt, *pnt_b);
 			while (table[*pnt] != 0) /* Have an event */
 			{
@@ -737,6 +756,7 @@ int event(int * pnt, int * life, int * pnt_b, int * life_b, int num, int player)
 		{
 			*pnt_b += upward[num];
 			printf("%s\n", event_ary[num]);
+			processing_image(4);
 			board(*pnt, *pnt_b);
 			while (table[*pnt_b] != 0) /* Have an event */
 			{
@@ -812,6 +832,7 @@ int event(int * pnt, int * life, int * pnt_b, int * life_b, int num, int player)
 		{
 			*life += addlp[num-15];
 			printf("%s\n", event_ary[num]);
+			processing_image(4);
 			if (*life > 4)
 				*life = 4;
 			printf("\nYours life point (");
@@ -828,6 +849,7 @@ int event(int * pnt, int * life, int * pnt_b, int * life_b, int num, int player)
 		{
 			*life_b += addlp[num-15];
 			printf("%s\n", event_ary[num]);
+			processing_image(4);
 			if (*life_b > 4)
 				*life_b = 4;
 			printf("\nYours life point (");
@@ -848,6 +870,7 @@ int event(int * pnt, int * life, int * pnt_b, int * life_b, int num, int player)
 		{
 			*pnt += backward[num-20];
 			printf("%s\n", event_ary[num]);
+			processing_image(4);
 			board(*pnt, *pnt_b);
 			while (table[*pnt] != 0) /* Have an event */
 			{
@@ -920,6 +943,7 @@ int event(int * pnt, int * life, int * pnt_b, int * life_b, int num, int player)
 		{
 			*pnt_b += backward[num];
 			printf("%s\n", event_ary[num]);
+			processing_image(4);
 			board(*pnt, *pnt_b);
 			while (table[*pnt_b] != 0) /* Have an event */
 			{
@@ -995,6 +1019,7 @@ int event(int * pnt, int * life, int * pnt_b, int * life_b, int num, int player)
 		{
 			*life += reducelp[num-35];
 			printf("%s\n", event_ary[num]);
+			processing_image(4);
 			printf("\nYours life point (");
 			for (i = 1; i <= 4; ++i) /* Print life point */
 			{
@@ -1009,6 +1034,7 @@ int event(int * pnt, int * life, int * pnt_b, int * life_b, int num, int player)
 		{
 			*life_b += reducelp[num-35];
 			printf("%s\n", event_ary[num]);
+			processing_image(4);
 			printf("\nYours life point (");
 			for (i = 1; i <= 4; ++i) /* Print life point */
 			{
@@ -1022,4 +1048,50 @@ int event(int * pnt, int * life, int * pnt_b, int * life_b, int num, int player)
 		return 0;
 	}
 
+}
+int processing_image(int m)
+{
+    int i, j;
+    switch(m){
+        case 1:{ //arrow
+            printf("\n          ...\n");
+            for(i=0;i<30000000;i++);
+            printf("          ...\n");
+            for(i=0;i<30000000;i++);
+            printf("          ...\n");
+            for(i=0;i<30000000;i++);
+            printf("          ...\n");
+            for(i=0;i<30000000;i++);
+            printf("        .......\n");
+            for(i=0;i<30000000;i++);
+            printf("          ...\n");
+            for(i=0;i<30000000;i++);
+            printf("           .\n\n");
+            for(i=0;i<30000000;i++);}
+            break;
+        case 2:{ //3 dot
+            printf(".");
+            for(i=0;i<300000000;i++);
+            printf(".");
+            for(i=0;i<300000000;i++);
+            printf(".\n\n");
+            for(i=0;i<700000000;i++);
+            break;
+        }
+        case 3:{
+            for(i=0;i<300000000;i++);
+            printf(".");
+            for(i=0;i<300000000;i++);
+            printf(".");
+            for(i=0;i<300000000;i++);
+            printf(".\n");
+        }
+        case 4:{
+            for(i=0;i<1000000000;i++);
+        }
+        case 5:{
+            for(i=0;i<50000000;i++);
+        }
+    }
+    return 0;
 }
