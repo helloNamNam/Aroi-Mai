@@ -5,7 +5,7 @@
 void call(int, int, int); /*Function print player's position and events in board*/
 int board(int, int); /* Function print board to play game */
 int game(char[*], int); /* Function change turn and rolls die to send to function board */
-int event(int *, int *, int *, int *, int, int); /* Function random event when player move on event square grid */
+int event(int *, int *, int *, int *, int, int, int); /* Function random event when player move on event square grid */
 int main() /* Get mode to play or read the rules */
 {
 	char mode[1], confirm[1];
@@ -118,7 +118,7 @@ int game(char mode[1], int fp)
 				}
 				printf(") : ");
 				scanf("%s", dice);
-				while (strcmp(dice, "Dice") != 0) /* Loop for input 'Dice' */
+				while (strcmp(dice, "Dice") != 0)
 				{
 					printf("Incorrect! Please type 'Dice' to roll the dice : ");
 					scanf("%s", dice);
@@ -148,7 +148,7 @@ int game(char mode[1], int fp)
 						if (ch_char[0] == 'a') /* Select choice A */
 						{
 							printf("You select choice A.\n");
-							event(&point[0], &lp[0], &point[1], &lp[1], ch_a, 0);
+							event(&point[0], &lp[0], &point[1], &lp[1], ch_a, 0, mode[0]);
 							if ((ch_a >= 15 && ch_a <= 19) || (ch_a >= 35 && ch_a <= 39))
 							{
 								evenbreak = 1;
@@ -157,7 +157,7 @@ int game(char mode[1], int fp)
 						else if (ch_char[0] == 'b') /* Select choice B */
 						{
 							printf("You select choice B.\n");
-							event(&point[0], &lp[0], &point[1], &lp[1], ch_b, 0);
+							event(&point[0], &lp[0], &point[1], &lp[1], ch_b, 0, mode[0]);
 							if ((ch_b >= 15 && ch_b <= 19) || (ch_b >= 35 && ch_b <= 39))
 							{
 								evenbreak = 1;
@@ -166,7 +166,7 @@ int game(char mode[1], int fp)
 						else if (ch_char[0] == 'c') /* Select choice B */
 						{
 							printf("You select choice C.\n");
-							event(&point[0], &lp[0], &point[1], &lp[1], ch_c, 0);
+							event(&point[0], &lp[0], &point[1], &lp[1], ch_c, 0, mode[0]);
 							if ((ch_c >= 15 && ch_c <= 19) || (ch_c >= 35 && ch_c <= 39))
 							{
 								evenbreak = 1;
@@ -190,7 +190,7 @@ int game(char mode[1], int fp)
 						if (ch_char[0] == 'a') /* Select choice A */
 						{
 							printf("You select choice A.\n");
-							event(&point[0], &lp[0], &point[1], &lp[1], ch_a, 0);
+							event(&point[0], &lp[0], &point[1], &lp[1], ch_a, 0, mode[0]);
 							if ((ch_a >= 15 && ch_a <= 19) || (ch_a >= 35 && ch_a <= 39))
 							{
 								evenbreak = 1;
@@ -199,7 +199,7 @@ int game(char mode[1], int fp)
 						else if (ch_char[0] == 'b') /* Select choice B */
 						{
 							printf("You select choice B.\n");
-							event(&point[0], &lp[0], &point[1], &lp[1], ch_b, 0);
+							event(&point[0], &lp[0], &point[1], &lp[1], ch_b, 0, mode[0]);
 							if ((ch_b >= 15 && ch_b <= 19) || (ch_b >= 35 && ch_b <= 39))
 							{
 								evenbreak = 1;
@@ -208,7 +208,7 @@ int game(char mode[1], int fp)
 						else if (ch_char[0] == 'c') /* Select choice C */
 						{
 							printf("You select choice C.\n");
-							event(&point[0], &lp[0], &point[1], &lp[1], ch_c, 0);
+							event(&point[0], &lp[0], &point[1], &lp[1], ch_c, 0, mode[0]);
 							if ((ch_c >= 15 && ch_c <= 19) || (ch_c >= 35 && ch_c <= 39))
 							{
 								evenbreak = 1;
@@ -254,7 +254,7 @@ int game(char mode[1], int fp)
 					{
 						ch_a = rand() % 20;
 						printf("Bot have an events.\n");
-						event(&point[0], &lp[0], &point[1], &lp[1], ch_a, 1);
+						event(&point[0], &lp[0], &point[1], &lp[1], ch_a, 1, mode[0]);
 						if ((ch_a >= 15 && ch_a <= 19) || (ch_a >= 35 && ch_a <= 39))
 						{
 							evenbreak = 1;
@@ -264,7 +264,7 @@ int game(char mode[1], int fp)
 					{
 						ch_a = rand() % 40;
 						printf("Bot have an events.\n");
-						event(&point[0], &lp[0], &point[1], &lp[1], ch_a, 1);
+						event(&point[0], &lp[0], &point[1], &lp[1], ch_a, 1, mode[0]);
 						if ((ch_a >= 15 && ch_a <= 19) || (ch_a >= 35 && ch_a <= 39))
 						{
 							evenbreak = 1;
@@ -361,7 +361,7 @@ int game(char mode[1], int fp)
 						if (ch_char[0] == 'a') /* Select choice A */
 						{
 							printf("You select choice A.\n");
-							event(&point[0], &lp[0], &point[1], &lp[1], ch_a, 0);
+							event(&point[0], &lp[0], &point[1], &lp[1], ch_a, 0, mode[0]);
 							if ((ch_a >= 15 && ch_a <= 19) || (ch_a >= 35 && ch_a <= 39))
 							{
 								evenbreak = 1;
@@ -370,7 +370,7 @@ int game(char mode[1], int fp)
 						else if (ch_char[0] == 'b') /* Select choice B */
 						{
 							printf("You select choice B.\n");
-							event(&point[0], &lp[0], &point[1], &lp[1], ch_b, 0);
+							event(&point[0], &lp[0], &point[1], &lp[1], ch_b, 0, mode[0]);
 							if ((ch_b >= 15 && ch_b <= 19) || (ch_b >= 35 && ch_b <= 39))
 							{
 								evenbreak = 1;
@@ -379,7 +379,7 @@ int game(char mode[1], int fp)
 						else if (ch_char[0] == 'c') /* Select choice B */
 						{
 							printf("You select choice C.\n");
-							event(&point[0], &lp[0], &point[1], &lp[1], ch_c, 0);
+							event(&point[0], &lp[0], &point[1], &lp[1], ch_c, 0, mode[0]);
 							if ((ch_c >= 15 && ch_c <= 19) || (ch_c >= 35 && ch_c <= 39))
 							{
 								evenbreak = 1;
@@ -403,17 +403,17 @@ int game(char mode[1], int fp)
 						if (ch_char[0] == 'a') /* Select choice A */
 						{
 							printf("You select choice A.\n");
-							event(&point[0], &lp[0], &point[1], &lp[1], ch_a, 0);
+							event(&point[0], &lp[0], &point[1], &lp[1], ch_a, 0, mode[0]);
 						}
 						else if (ch_char[0] == 'b') /* Select choice B */
 						{
 							printf("You select choice B.\n");
-							event(&point[0], &lp[0], &point[1], &lp[1], ch_b, 0);
+							event(&point[0], &lp[0], &point[1], &lp[1], ch_b, 0, mode[0]);
 						}
 						else if (ch_char[0] == 'c') /* Select choice B */
 						{
 							printf("You select choice C.\n");
-							event(&point[0], &lp[0], &point[1], &lp[1], ch_c, 0);
+							event(&point[0], &lp[0], &point[1], &lp[1], ch_c, 0, mode[0]);
 						}
 					}
 					else
@@ -474,7 +474,7 @@ int game(char mode[1], int fp)
 						if (ch_char[0] == 'a') /* Select choice A */
 						{
 							printf("You select choice A.\n");
-							event(&point[0], &lp[0], &point[1], &lp[1], ch_a, 1);
+							event(&point[0], &lp[0], &point[1], &lp[1], ch_a, 1, mode[0]);
 							if ((ch_a >= 15 && ch_a <= 19) || (ch_a >= 35 && ch_a <= 39))
 							{
 								evenbreak = 1;
@@ -483,7 +483,7 @@ int game(char mode[1], int fp)
 						else if (ch_char[0] == 'b') /* Select choice B */
 						{
 							printf("You select choice B.\n");
-							event(&point[0], &lp[0], &point[1], &lp[1], ch_b, 1);
+							event(&point[0], &lp[0], &point[1], &lp[1], ch_b, 1, mode[0]);
 							if ((ch_b >= 15 && ch_b <= 19) || (ch_b >= 35 && ch_b <= 39))
 							{
 								evenbreak = 1;
@@ -492,7 +492,7 @@ int game(char mode[1], int fp)
 						else if (ch_char[0] == 'c') /* Select choice B */
 						{
 							printf("You select choice C.\n");
-							event(&point[0], &lp[0], &point[1], &lp[1], ch_c, 1);
+							event(&point[0], &lp[0], &point[1], &lp[1], ch_c, 1, mode[0]);
 							if ((ch_c >= 15 && ch_c <= 19) || (ch_c >= 35 && ch_c <= 39))
 							{
 								evenbreak = 1;
@@ -516,17 +516,17 @@ int game(char mode[1], int fp)
 						if (ch_char[0] == 'a') /* Select choice A */
 						{
 							printf("You select choice A.\n");
-							event(&point[0], &lp[0], &point[1], &lp[1], ch_a, 1);
+							event(&point[0], &lp[0], &point[1], &lp[1], ch_a, 1, mode[0]);
 						}
 						else if (ch_char[0] == 'b') /* Select choice B */
 						{
 							printf("You select choice B.\n");
-							event(&point[0], &lp[0], &point[1], &lp[1], ch_b, 1);
+							event(&point[0], &lp[0], &point[1], &lp[1], ch_b, 1, mode[0]);
 						}
 						else if (ch_char[0] == 'c') /* Select choice B */
 						{
 							printf("You select choice C.\n");
-							event(&point[0], &lp[0], &point[1], &lp[1], ch_c, 1);
+							event(&point[0], &lp[0], &point[1], &lp[1], ch_c, 1, mode[0]);
 						}
 					}
 					else
@@ -666,7 +666,7 @@ void call(int a, int b, int i) /* Print player's position and events in board */
 		printf("___|");
 	}
 }
-int event(int * pnt, int * life, int * pnt_b, int * life_b, int num, int player)
+int event(int * pnt, int * life, int * pnt_b, int * life_b, int num, int player, int mod)
 {
 	int table[90] = {0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 2, 1, 0, 0, 0, 0, 2, 0, 0, 2, 1, 0, 0, 2, 0, 0, 2, 0, 0, 1, 0, 0, 1, 2, 0, 0, 2, 0, 0, 1, 0, 0, 0, 2, 0, 2, 0, 0, 0, 1, 1, 2, 0, 2, 0, 1, 0, 0, 0, 2, 1, 0, 1, 1, 0, 2, 2, 2, 2, 2, 0};
 	char ch_char[1];
@@ -704,17 +704,17 @@ int event(int * pnt, int * life, int * pnt_b, int * life_b, int num, int player)
 					if (ch_char[0] == 'a') /* Select choice A */
 					{
 						printf("You select choice A.\n");
-						event(pnt, life, pnt_b, life_b, ch_a, 0);
+						event(pnt, life, pnt_b, life_b, ch_a, 0, mod);
 					}
 					else if (ch_char[0] == 'b') /* Select choice B */
 					{
 						printf("You select choice B.\n");
-						event(pnt, life, pnt_b, life_b, ch_b, 0);
+						event(pnt, life, pnt_b, life_b, ch_b, 0, mod);
 					}
 					else if (ch_char[0] == 'c') /* Select choice B */
 					{
 						printf("You select choice C.\n");
-						event(pnt, life, pnt_b, life_b, ch_c, 0);
+						event(pnt, life, pnt_b, life_b, ch_c, 0, mod);
 					}
 				}
 				else if (table[*pnt] == 2) /* Good and bad events */
@@ -734,98 +734,129 @@ int event(int * pnt, int * life, int * pnt_b, int * life_b, int num, int player)
 					if (ch_char[0] == 'a') /* Select choice A */
 					{
 						printf("You select choice A.\n");
-						event(pnt, life, pnt_b, life_b, ch_a, 0);
+						event(pnt, life, pnt_b, life_b, ch_a, 0, mod);
 					}
 					else if (ch_char[0] == 'b') /* Select choice B */
 					{
 						printf("You select choice B.\n");
-						event(pnt, life, pnt_b, life_b, ch_b, 0);
+						event(pnt, life, pnt_b, life_b, ch_b, 0, mod);
 					}
 					else if (ch_char[0] == 'c') /* Select choice B */
 					{
 						printf("You select choice C.\n");
-						event(pnt, life, pnt_b, life_b, ch_c, 0);
+						event(pnt, life, pnt_b, life_b, ch_c, 0, mod);
 					}
 				}
 				if (*pnt >= 89 || *life <= 0) /* If have win or lose player after event */
 					return 0;
 			}
 			return 0;
-		}
+		}	
 		else
 		{
-			*pnt_b += upward[num];
-			printf("%s\n", event_ary[num]);
-			processing_image(4);
-			board(*pnt, *pnt_b);
-			while (table[*pnt_b] != 0) /* Have an event */
+			if(mod == '1')
 			{
-				if (table[*pnt_b] == 1) /* Good events */
+				*pnt_b += upward[num];
+				printf("%s\n", event_ary[num]);
+				processing_image(4);
+				board(*pnt, *pnt_b);
+				while (table[*pnt_b] != 0) /* Have an event */
 				{
-					ch_a = rand() % 20;
-					ch_b = rand() % 20;
-					ch_c = rand() % 20;
-					printf("You have an events please select choice 'a', 'b' or 'c' : ");
-					scanf("%s", ch_char); /* input char to select event */
-					len = strlen(ch_char);
-					while((ch_char[0] != 'a' && ch_char[0] != 'b' && ch_char[0] != 'c') || len > 1)
+					if (table[*pnt_b] == 1) /* Good events */
 					{
-						printf("You don't understand english? please select choice 'a', 'b' or 'c' : ");
-						scanf("%s", ch_char);
-						len = strlen(ch_char);
+						ch_a = rand() % 20;
+						printf("Bot have an events.\n");
+						event(pnt, life, pnt_b, life_b, ch_a, 1, mod);
+
 					}
-					if (ch_char[0] == 'a') /* Select choice A */
+					else if (table[*pnt_b] == 2) /* Good and bad events */
 					{
-						printf("You select choice A.\n");
-						event(pnt, life, pnt_b, life_b, ch_a, 1);
+						ch_a = rand() % 40;
+						printf("Bot have an events.\n");
+						event(pnt, life, pnt_b, life_b, ch_a, 1, mod);
+						}
 					}
-					else if (ch_char[0] == 'b') /* Select choice B */
-					{
-						printf("You select choice B.\n");
-						event(pnt, life, pnt_b, life_b, ch_b, 1);
-					}
-					else if (ch_char[0] == 'c') /* Select choice B */
-					{
-						printf("You select choice C.\n");
-						event(pnt, life, pnt_b, life_b, ch_c, 1);
-					}
+					if (*pnt_b >= 89 || *life_b <= 0) /* If have win or lose player after event */
+						return 0;
 				}
-				else if (table[*pnt] == 2) /* Good and bad events */
+			
+			else
+			{
+				*pnt_b += upward[num];
+				printf("%s\n", event_ary[num]);
+				processing_image(4);
+				board(*pnt, *pnt_b);
+				while (table[*pnt_b] != 0) /* Have an event */
 				{
-					ch_a = rand() % 40;
-					ch_b = rand() % 40;
-					ch_c = rand() % 40;
-					printf("You have an events please select choice 'a', 'b' or 'c' : ");
-					scanf("%s", ch_char); /* input char to select event */
-					len = strlen(ch_char);
-					while((ch_char[0] != 'a' && ch_char[0] != 'b' && ch_char[0] != 'c') || len > 1)
+					if (table[*pnt_b] == 1) /* Good events */
 					{
-						printf("You don't understand english? please select choice 'a', 'b' or 'c' : ");
-						scanf("%s", ch_char);
+						ch_a = rand() % 20;
+						ch_b = rand() % 20;
+						ch_c = rand() % 20;
+						printf("You have an events please select choice 'a', 'b' or 'c' : ");
+						scanf("%s", ch_char); /* input char to select event */
 						len = strlen(ch_char);
+						while((ch_char[0] != 'a' && ch_char[0] != 'b' && ch_char[0] != 'c') || len > 1)
+						{
+							printf("You don't understand english? please select choice 'a', 'b' or 'c' : ");
+							scanf("%s", ch_char);
+							len = strlen(ch_char);
+						}
+						if (ch_char[0] == 'a') /* Select choice A */
+						{
+							printf("You select choice A.\n");
+							event(pnt, life, pnt_b, life_b, ch_a, 1, mod);
+						}
+						else if (ch_char[0] == 'b') /* Select choice B */
+						{
+							printf("You select choice B.\n");
+							event(pnt, life, pnt_b, life_b, ch_b, 1, mod);
+						}
+						else if (ch_char[0] == 'c') /* Select choice B */
+						{
+							printf("You select choice C.\n");
+							event(pnt, life, pnt_b, life_b, ch_c, 1, mod);
+						}
 					}
-					if (ch_char[0] == 'a') /* Select choice A */
+					else if (table[*pnt_b] == 2) /* Good and bad events */
 					{
-						printf("You select choice A.\n");
-						event(pnt, life, pnt_b, life_b, ch_a, 1);
-					}
-					else if (ch_char[0] == 'b') /* Select choice B */
-					{
-						printf("You select choice B.\n");
-						event(pnt, life, pnt_b, life_b, ch_b, 1);
-					}
-					else if (ch_char[0] == 'c') /* Select choice B */
-					{
+						ch_a = rand() % 40;
+						ch_b = rand() % 40;
+						ch_c = rand() % 40;
+						printf("You have an events please select choice 'a', 'b' or 'c' : ");
+						scanf("%s", ch_char); /* input char to select event */
+						len = strlen(ch_char);
+						while((ch_char[0] != 'a' && ch_char[0] != 'b' && ch_char[0] != 'c') || len > 1)
+						{
+							printf("You don't understand english? please select choice 'a', 'b' or 'c' : ");
+							scanf("%s", ch_char);
+							len = strlen(ch_char);
+						}
+						if (ch_char[0] == 'a') /* Select choice A */
+						{
+							printf("You select choice A.\n");
+							event(pnt, life, pnt_b, life_b, ch_a, 1, mod);
+						}
+						else if (ch_char[0] == 'b') /* Select choice B */
+						{
+							printf("You select choice B.\n");
+							event(pnt, life, pnt_b, life_b, ch_b, 1, mod);
+						}
+						else if (ch_char[0] == 'c') /* Select choice B */
+						{
 						printf("You select choice C.\n");
-						event(pnt, life, pnt_b, life_b, ch_c, 1);
+						event(pnt, life, pnt_b, life_b, ch_c, 1, mod);
+						}
 					}
+					if (*pnt_b >= 89 || *life_b <= 0) /* If have win or lose player after event */
+						return 0;
 				}
-				if (*pnt_b >= 89 || *life_b <= 0) /* If have win or lose player after event */
-					return 0;
+
 			}
 			return 0;
-		}
-	}
+    	}
+    }
+
 	else if (num < 20)
 	{
 		if (player == 0)
@@ -891,17 +922,17 @@ int event(int * pnt, int * life, int * pnt_b, int * life_b, int num, int player)
 					if (ch_char[0] == 'a') /* Select choice A */
 					{
 						printf("You select choice A.\n");
-						event(pnt, life, pnt_b, life_b, ch_a, 0);
+						event(pnt, life, pnt_b, life_b, ch_a, 0, mod);
 					}
 					else if (ch_char[0] == 'b') /* Select choice B */
 					{
 						printf("You select choice B.\n");
-						event(pnt, life, pnt_b, life_b, ch_b, 0);
+						event(pnt, life, pnt_b, life_b, ch_b, 0, mod);
 					}
 					else if (ch_char[0] == 'c') /* Select choice B */
 					{
 						printf("You select choice C.\n");
-						event(pnt, life, pnt_b, life_b, ch_c, 0);
+						event(pnt, life, pnt_b, life_b, ch_c, 0, mod);
 					}
 				}
 				else if (table[*pnt] == 2) /* Good and bad events */
@@ -921,17 +952,17 @@ int event(int * pnt, int * life, int * pnt_b, int * life_b, int num, int player)
 					if (ch_char[0] == 'a') /* Select choice A */
 					{
 						printf("You select choice A.\n");
-						event(pnt, life, pnt_b, life_b, ch_a, 0);
+						event(pnt, life, pnt_b, life_b, ch_a, 0, mod);
 					}
 					else if (ch_char[0] == 'b') /* Select choice B */
 					{
 						printf("You select choice B.\n");
-						event(pnt, life, pnt_b, life_b, ch_b, 0);
+						event(pnt, life, pnt_b, life_b, ch_b, 0, mod);
 					}
 					else if (ch_char[0] == 'c') /* Select choice B */
 					{
 						printf("You select choice C.\n");
-						event(pnt, life, pnt_b, life_b, ch_c, 0);
+						event(pnt, life, pnt_b, life_b, ch_c, 0, mod);
 					}
 				}
 				if (*pnt >= 89 || *life <= 0) /* If have win or lose player after event */
@@ -941,77 +972,107 @@ int event(int * pnt, int * life, int * pnt_b, int * life_b, int num, int player)
 		}
 		else
 		{
-			*pnt_b += backward[num];
-			printf("%s\n", event_ary[num]);
-			processing_image(4);
-			board(*pnt, *pnt_b);
-			while (table[*pnt_b] != 0) /* Have an event */
+			if(mod == '1')
 			{
-				if (table[*pnt_b] == 1) /* Good events */
+				*pnt_b += backward[num];
+				printf("%s\n", event_ary[num]);
+				processing_image(4);
+				board(*pnt, *pnt_b);
+				while (table[*pnt_b] != 0) /* Have an event */
 				{
-					ch_a = rand() % 20;
-					ch_b = rand() % 20;
-					ch_c = rand() % 20;
-					printf("You have an events please select choice 'a', 'b' or 'c' : ");
-					scanf("%s", ch_char); /* input char to select event */
-					len = strlen(ch_char);
-					while((ch_char[0] != 'a' && ch_char[0] != 'b' && ch_char[0] != 'c') || len > 1)
+					if (table[*pnt_b] == 1) /* Good events */
 					{
-						printf("You don't understand english? please select choice 'a', 'b' or 'c' : ");
-						scanf("%s", ch_char);
-						len = strlen(ch_char);
+						ch_a = rand() % 20;
+						printf("Bot have an events.\n");
+						event(pnt, life, pnt_b, life_b, ch_a, 1, mod);
+
 					}
-					if (ch_char[0] == 'a') /* Select choice A */
+					else if (table[*pnt_b] == 2) /* Good and bad events */
 					{
-						printf("You select choice A.\n");
-						event(pnt, life, pnt_b, life_b, ch_a, 1);
+						ch_a = rand() % 40;
+						printf("Bot have an events.\n");
+						event(pnt, life, pnt_b, life_b, ch_a, 1, mod);
+						}
 					}
-					else if (ch_char[0] == 'b') /* Select choice B */
-					{
-						printf("You select choice B.\n");
-						event(pnt, life, pnt_b, life_b, ch_b, 1);
-					}
-					else if (ch_char[0] == 'c') /* Select choice B */
-					{
-						printf("You select choice C.\n");
-						event(pnt, life, pnt_b, life_b, ch_c, 1);
-					}
+					if (*pnt_b >= 89 || *life_b <= 0) /* If have win or lose player after event */
+						return 0;
 				}
-				else if (table[*pnt] == 2) /* Good and bad events */
+			
+			else
+			{
+				*pnt_b += backward[num];
+				printf("%s\n", event_ary[num]);
+				processing_image(4);
+				board(*pnt, *pnt_b);
+				while (table[*pnt_b] != 0) /* Have an event */
 				{
-					ch_a = rand() % 40;
-					ch_b = rand() % 40;
-					ch_c = rand() % 40;
-					printf("You have an events please select choice 'a', 'b' or 'c' : ");
-					scanf("%s", ch_char); /* input char to select event */
-					len = strlen(ch_char);
-					while((ch_char[0] != 'a' && ch_char[0] != 'b' && ch_char[0] != 'c') || len > 1)
+					if (table[*pnt_b] == 1) /* Good events */
 					{
-						printf("You don't understand english? please select choice 'a', 'b' or 'c' : ");
-						scanf("%s", ch_char);
+						ch_a = rand() % 20;
+						ch_b = rand() % 20;
+						ch_c = rand() % 20;
+						printf("You have an events please select choice 'a', 'b' or 'c' : ");
+						scanf("%s", ch_char); /* input char to select event */
 						len = strlen(ch_char);
+						while((ch_char[0] != 'a' && ch_char[0] != 'b' && ch_char[0] != 'c') || len > 1)
+						{
+							printf("You don't understand english? please select choice 'a', 'b' or 'c' : ");
+							scanf("%s", ch_char);
+							len = strlen(ch_char);
+						}
+						if (ch_char[0] == 'a') /* Select choice A */
+						{
+							printf("You select choice A.\n");
+							event(pnt, life, pnt_b, life_b, ch_a, 1, mod);
+						}
+						else if (ch_char[0] == 'b') /* Select choice B */
+						{
+							printf("You select choice B.\n");
+							event(pnt, life, pnt_b, life_b, ch_b, 1, mod);
+						}
+						else if (ch_char[0] == 'c') /* Select choice B */
+						{
+							printf("You select choice C.\n");
+							event(pnt, life, pnt_b, life_b, ch_c, 1, mod);
+						}
 					}
-					if (ch_char[0] == 'a') /* Select choice A */
+					else if (table[*pnt_b] == 2) /* Good and bad events */
 					{
-						printf("You select choice A.\n");
-						event(pnt, life, pnt_b, life_b, ch_a, 1);
-					}
-					else if (ch_char[0] == 'b') /* Select choice B */
-					{
-						printf("You select choice B.\n");
-						event(pnt, life, pnt_b, life_b, ch_b, 1);
-					}
-					else if (ch_char[0] == 'c') /* Select choice B */
-					{
+						ch_a = rand() % 40;
+						ch_b = rand() % 40;
+						ch_c = rand() % 40;
+						printf("You have an events please select choice 'a', 'b' or 'c' : ");
+						scanf("%s", ch_char); /* input char to select event */
+						len = strlen(ch_char);
+						while((ch_char[0] != 'a' && ch_char[0] != 'b' && ch_char[0] != 'c') || len > 1)
+						{
+							printf("You don't understand english? please select choice 'a', 'b' or 'c' : ");
+							scanf("%s", ch_char);
+							len = strlen(ch_char);
+						}
+						if (ch_char[0] == 'a') /* Select choice A */
+						{
+							printf("You select choice A.\n");
+							event(pnt, life, pnt_b, life_b, ch_a, 1, mod);
+						}
+						else if (ch_char[0] == 'b') /* Select choice B */
+						{
+							printf("You select choice B.\n");
+							event(pnt, life, pnt_b, life_b, ch_b, 1, mod);
+						}
+						else if (ch_char[0] == 'c') /* Select choice B */
+						{
 						printf("You select choice C.\n");
-						event(pnt, life, pnt_b, life_b, ch_c, 1);
+						event(pnt, life, pnt_b, life_b, ch_c, 1, mod);
+						}
 					}
+					if (*pnt_b >= 89 || *life_b <= 0) /* If have win or lose player after event */
+						return 0;
 				}
-				if (*pnt_b >= 89 || *life_b <= 0) /* If have win or lose player after event */
-					return 0;
+
 			}
 			return 0;
-		}
+    	}
 	}
 	else
 	{
